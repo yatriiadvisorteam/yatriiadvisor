@@ -9,3 +9,87 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Tourist {
+  id             String      @id @default(uuid()) @db.Uuid
+  First_name     String
+  Last_name      String
+  Phone_number   Int
+  Mail_ID        String      @unique
+  Password       String
+  City           String
+  Address        String
+  Interest_Place String
+  Review         Review[]
+  history        history[]
+  Favorites      Favorites[]
+}
+
+model Guide {
+  Guide_ID     String @id @default(uuid()) @db.Uuid
+  First_name   String
+  Last_name    String
+  ID_Proof     String
+  Mail_ID      String @unique
+  Password     String
+  Address      String
+  City         String
+  Phone_number Int
+  Experience   String
+}
+
+model Destination {
+  ID          String      @id @default(uuid()) @db.Uuid
+  Name        String
+  Best_time   String
+  Best_season String
+  Hotels      String
+  Places      Places[]
+  history     history[]
+  Favorites   Favorites[]
+}
+
+model Places {
+  ID             String      @id @default(uuid()) @db.Uuid
+  Destination    Destination @relation(fields: [Destination_Id], references: [ID])
+  Destination_Id String      @db.Uuid
+  Place_Name     String
+  Image          String
+  Weather        Weather[]
+}
+
+model Review {
+  ID          String  @id @default(uuid()) @db.Uuid
+  Tourist     Tourist @relation(fields: [T_ID], references: [id])
+  T_ID        String  @db.Uuid
+  Rating      Int
+  Review      String  @db.VarChar(200)
+  Destination String
+}
+
+model history {
+  ID          String      @id @default(uuid()) @db.Uuid
+  Tourist     Tourist     @relation(fields: [T_ID], references: [id])
+  T_ID        String      @db.Uuid
+  Trip_status Boolean
+  Destination Destination @relation(fields: [D_ID], references: [ID])
+  D_ID        String      @db.Uuid
+}
+
+model Weather {
+  ID          String   @id @default(uuid()) @db.Uuid
+  Places      Places   @relation(fields: [Place_name], references: [ID])
+  Place_name  String   @db.Uuid
+  Temperature String
+  Humidity    Float
+  Date        DateTime
+  Day         String
+}
+
+model Favorites {
+  Fav_ID      Int         @unique @default(autoincrement())
+  Tourist_id     Tourist     @relation(fields: [T_ID], references: [id])
+  T_ID        String      @db.Uuid
+  Destination Destination @relation(fields: [D_ID], references: [ID])
+  D_ID        String      @db.Uuid
+}
