@@ -14,7 +14,7 @@ model Tourist {
   id             String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   First_name     String
   Last_name      String
-  Phone_number   BigInt  @db.BigInt
+  Phone_number   BigInt     @db.BigInt
   Mail_ID        String      @unique
   Password       String
   City           String
@@ -26,15 +26,15 @@ model Tourist {
 }
 
 model Guide {
-  Guide_ID     String @id @default(uuid()) @db.Uuid
-  First_name   String
-  Last_name    String
+  Guide_ID     String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  First_name   String @unique
+  Last_name    String @unique
   ID_Proof     String
   Mail_ID      String @unique
   Password     String
   Address      String
   City         String
-  Phone_number Int
+  Phone_number BigInt     @db.BigInt
   Experience   String
 }
 
@@ -87,7 +87,7 @@ model Weather {
 }
 
 model Favorites {
-  Fav_ID      Int          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  Fav_ID         String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   Tourist_id     Tourist     @relation(fields: [T_ID], references: [id])
   T_ID        String      @db.Uuid
   Destination Destination @relation(fields: [D_ID], references: [ID])
