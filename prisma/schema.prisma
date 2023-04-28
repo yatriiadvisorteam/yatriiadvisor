@@ -39,7 +39,7 @@ model Guide {
 }
 
 model Destination {
-  ID          String      @id @default(uuid()) @db.Uuid
+  ID          String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   Name        String
   Best_time   String
   Best_season String
@@ -50,7 +50,7 @@ model Destination {
 }
 
 model Places {
-  ID             String      @id @default(uuid()) @db.Uuid
+  ID             String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   Destination    Destination @relation(fields: [Destination_Id], references: [ID])
   Destination_Id String      @db.Uuid
   Place_Name     String
@@ -68,7 +68,7 @@ model Review {
 }
 
 model history {
-  ID          String      @id @default(uuid()) @db.Uuid
+  ID          String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   Tourist     Tourist     @relation(fields: [T_ID], references: [id])
   T_ID        String      @db.Uuid
   Trip_status Boolean
@@ -77,7 +77,7 @@ model history {
 }
 
 model Weather {
-  ID          String   @id @default(uuid()) @db.Uuid
+  ID          String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   Places      Places   @relation(fields: [Place_name], references: [ID])
   Place_name  String   @db.Uuid
   Temperature String
@@ -87,7 +87,7 @@ model Weather {
 }
 
 model Favorites {
-  Fav_ID      Int         @unique @default(autoincrement())
+  Fav_ID      Int          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   Tourist_id     Tourist     @relation(fields: [T_ID], references: [id])
   T_ID        String      @db.Uuid
   Destination Destination @relation(fields: [D_ID], references: [ID])
