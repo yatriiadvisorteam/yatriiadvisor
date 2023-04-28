@@ -11,10 +11,10 @@ datasource db {
 }
 
 model Tourist {
-  id             String      @id @default(uuid()) @db.Uuid
+  id             String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   First_name     String
   Last_name      String
-  Phone_number   Int
+  Phone_number   BigInt  @db.BigInt
   Mail_ID        String      @unique
   Password       String
   City           String
@@ -59,7 +59,7 @@ model Places {
 }
 
 model Review {
-  ID          String  @id @default(uuid()) @db.Uuid
+  ID          String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   Tourist     Tourist @relation(fields: [T_ID], references: [id])
   T_ID        String  @db.Uuid
   Rating      Int
