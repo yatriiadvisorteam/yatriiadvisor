@@ -65,24 +65,24 @@ model Review {
   Rating      Int
   Review      String  @db.VarChar(200)
   Destination String
+  Date        DateTime
 }
 
 model history {
   ID          Int     @id @default(autoincrement()) 
-  Tourist     Tourist     @relation(fields: [T_ID], references: [id])
+  Tourist     Tourist    @relation(fields: [T_ID], references: [id])
   T_ID        Int
-  Trip_status Boolean
   Destination Destination @relation(fields: [D_ID], references: [ID])
   D_ID        Int
 }
 
 model Weather {
   ID          Int    @id @default(autoincrement())
-  Places      Places   @relation(fields: [Place_name], references: [ID])
-  Place_name  Int 
+  Places      Places   @relation(fields: [Place_Id], references: [ID])
+  Place_Id    Int
   Temperature String
   Humidity    Float
-  Date        DateTime
+  date        DateTime
   Day         String
 }
 
