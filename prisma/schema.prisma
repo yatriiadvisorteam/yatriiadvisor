@@ -11,11 +11,11 @@ datasource db {
 }
 
 model Tourist {
-  id             Int      @id @default(autoincrement())
+  id             Int         @id @default(autoincrement())
   First_name     String
   Last_name      String
-  Phone_number   BigInt     @db.BigInt
-  Mail_ID        String      
+  Phone_number   BigInt      @db.BigInt
+  Mail_ID        String
   Password       String
   City           String
   Address        String
@@ -26,58 +26,58 @@ model Tourist {
 }
 
 model Guide {
-  Guide_ID     Int @id @default(autoincrement()) 
+  Guide_ID     Int    @id @default(autoincrement())
   First_name   String
-  Last_name    String 
+  Last_name    String
   ID_Proof     String
-  Mail_ID      String 
+  Mail_ID      String
   Password     String
   Address      String
   City         String
-  Phone_number BigInt     @db.BigInt
+  Phone_number BigInt @db.BigInt
   Experience   String
 }
 
 model Destination {
-  ID          Int      @id @default(autoincrement())
+  ID          Int         @id @default(autoincrement())
   Name        String
   Best_time   String
   Best_season String
   Hotels      String
   Places      Places[]
-  history     history[]
   Favorites   Favorites[]
 }
 
 model Places {
-  ID             Int     @id @default(autoincrement())
+  ID             Int         @id @default(autoincrement())
   Destination    Destination @relation(fields: [Destination_Id], references: [ID])
-  Destination_Id Int     
+  Destination_Id Int
   Place_Name     String
   Image          String
   Weather        Weather[]
 }
 
 model Review {
-  ID          Int @id @default(autoincrement()) 
-  Tourist     Tourist @relation(fields: [T_ID], references: [id])
-  T_ID        Int  
+  ID          Int       @id @default(autoincrement())
+  Tourist     Tourist   @relation(fields: [T_ID], references: [id])
+  T_ID        Int
   Rating      Int
-  Review      String  @db.VarChar(200)
+  Review      String    @db.VarChar(200)
   Destination String
   Date        DateTime
+  history     history[]
 }
 
 model history {
-  ID          Int     @id @default(autoincrement()) 
-  Tourist     Tourist    @relation(fields: [T_ID], references: [id])
-  T_ID        Int
-  Destination Destination @relation(fields: [D_ID], references: [ID])
-  D_ID        Int
+  ID        Int     @id @default(autoincrement())
+  Tourist   Tourist @relation(fields: [T_ID], references: [id])
+  T_ID      Int
+  Review    Review  @relation(fields: [Review_ID], references: [ID])
+  Review_ID Int
 }
 
 model Weather {
-  ID          Int    @id @default(autoincrement())
+  ID          Int      @id @default(autoincrement())
   Places      Places   @relation(fields: [Place_Id], references: [ID])
   Place_Id    Int
   Temperature String
@@ -87,8 +87,8 @@ model Weather {
 }
 
 model Favorites {
-  Fav_ID         Int      @id @default(autoincrement())
-  Tourist    Tourist     @relation(fields: [T_ID], references: [id])
+  Fav_ID      Int         @id @default(autoincrement())
+  Tourist     Tourist     @relation(fields: [T_ID], references: [id])
   T_ID        Int
   Destination Destination @relation(fields: [D_ID], references: [ID])
   D_ID        Int

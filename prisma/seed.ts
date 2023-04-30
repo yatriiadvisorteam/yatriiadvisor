@@ -3,27 +3,28 @@ const Prisma = new PrismaClient();
 async function main() {
     const Tourist = await Prisma.tourist.create({
         data: {
-            First_name: "Anand",
-            Last_name: "Kumar",
-            Phone_number: 8867121853,
-            Mail_ID: "anand@hmail.com",
-            Password: "anand123",
+            First_name: "Tejas",
+            Last_name: "J",
+            Phone_number: 886744567,
+            Mail_ID: "Tejas@gmail.com",
+            Password: "Tejas123",
             City: "bengaluru",
-            Address: "Tcpalya",
-            Interest_Place: "Ladhak"
-        },
+            Address: "Hoskota",
+            Interest_Place: "Mumbai"
+        }
+        
     });
     const Guide = await Prisma.guide.create({
         data: {
-            First_name: "Vishal",
-            Last_name: "Shetty",
-            ID_Proof: "11k",
-            Mail_ID: "VS123@gmail.com",
-            Password: "123abc",
-            Address: "Silkinstution",
+            First_name: "raj",
+            Last_name: "kumar",
+            ID_Proof: "13k",
+            Mail_ID: "RK133mail.com",
+            Password: "13Raj",
+            Address: "Trinity",
             City: "Banglore",
-            Phone_number: 9916757403,
-            Experience: "10"
+            Phone_number: 9916881230,
+            Experience: "10 years"
         },
     });
     const Destination = await Prisma.destination.create({
@@ -43,6 +44,7 @@ async function main() {
     });
     const Review = await Prisma.review.create({
         data: {
+            Date:new Date(),
             Rating: 5,
             Review: "excellent",
             Destination: "goa",
@@ -51,12 +53,12 @@ async function main() {
     });
  
     const Weather = await Prisma.weather.create({
-        data: {      
+        data: {     
+            date:new Date(), 
             Temperature:"25 degree C",
             Humidity:20,
-            Date:new Date(),
             Day:"thurday",
-            Place_name:Places.ID
+            Place_Id:Places.ID
         },
     });
     const  Favorites = await Prisma.favorites.create({
@@ -65,8 +67,16 @@ async function main() {
             D_ID:Destination.ID    
         },
     });   
+    const History = await Prisma.history.create({
+        data: {
+            T_ID:Tourist.id,
+            Review_ID:Review.ID
+            
+         
+        },
+    }); 
 
-console.log("Data sent====>");
+console.log("=>==>==>==>==> Data sent ==>==>");
 }
 main()
 .catch((e)=>console.error(e))
