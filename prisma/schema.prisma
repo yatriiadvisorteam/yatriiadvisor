@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Tourist {
-  id             Int         @id @default(autoincrement())
+  id             String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   First_name     String
   Last_name      String
   Phone_number   BigInt      @db.BigInt
@@ -26,7 +26,7 @@ model Tourist {
 }
 
 model Guide {
-  Guide_ID     Int    @id @default(autoincrement())
+  Guide_ID     String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   First_name   String
   Last_name    String
   ID_Proof     String
@@ -39,7 +39,7 @@ model Guide {
 }
 
 model Destination {
-  ID          Int         @id @default(autoincrement())
+  ID          String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   Name        String
   Best_time   String
   Best_season String
@@ -49,18 +49,18 @@ model Destination {
 }
 
 model Places {
-  ID             Int         @id @default(autoincrement())
+  ID             String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   Destination    Destination @relation(fields: [Destination_Id], references: [ID])
-  Destination_Id Int
+  Destination_Id String @db.Uuid
   Place_Name     String
   Image          String
   Weather        Weather[]
 }
 
 model Review {
-  ID          Int       @id @default(autoincrement())
+  ID          String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   Tourist     Tourist   @relation(fields: [T_ID], references: [id])
-  T_ID        Int
+  T_ID        String @db.Uuid
   Rating      Int
   Review      String    @db.VarChar(200)
   Destination String
@@ -69,17 +69,17 @@ model Review {
 }
 
 model history {
-  ID        Int     @id @default(autoincrement())
+  ID        String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   Tourist   Tourist @relation(fields: [T_ID], references: [id])
-  T_ID      Int
+  T_ID      String @db.Uuid
   Review    Review  @relation(fields: [Review_ID], references: [ID])
-  Review_ID Int
+  Review_ID String @db.Uuid
 }
 
 model Weather {
-  ID          Int      @id @default(autoincrement())
+  ID          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   Places      Places   @relation(fields: [Place_Id], references: [ID])
-  Place_Id    Int
+  Place_Id    String
   Temperature String
   Humidity    Float
   date        DateTime
@@ -87,9 +87,9 @@ model Weather {
 }
 
 model Favorites {
-  Fav_ID      Int         @id @default(autoincrement())
+  Fav_ID      String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   Tourist     Tourist     @relation(fields: [T_ID], references: [id])
-  T_ID        Int
+  T_ID        String      @db.Uuid
   Destination Destination @relation(fields: [D_ID], references: [ID])
-  D_ID        Int
+  D_ID        String @db.Uuid
 }

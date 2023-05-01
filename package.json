@@ -10,6 +10,8 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "@faker-js/faker": "^7.6.0",
+        "faker": "^5.5.3",
         "prisma": "^4.13.0",
         "ts-node": "^10.9.1"
     },
