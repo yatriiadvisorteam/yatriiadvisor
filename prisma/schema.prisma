@@ -10,86 +10,86 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Tourist {
-  id             String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  First_name     String
-  Last_name      String
-  Phone_number   BigInt      @db.BigInt
-  Mail_ID        String
-  Password       String
-  City           String
-  Address        String
-  Interest_Place String
-  Review         Review[]
-  history        history[]
-  Favorites      Favorites[]
+model tourists {
+  id             String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  first_name     String
+  last_name      String
+  phone_number   String
+  mail           String
+  password       String
+  city           String
+  address        String
+  interest_Place String
+  Review         reviews[]
+  histories      histories[]
+  favourites     favourites[]
 }
 
-model Guide {
-  Guide_ID     String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  First_name   String
-  Last_name    String
-  ID_Proof     String
-  Mail_ID      String
-  Password     String
-  Address      String
-  City         String
-  Phone_number BigInt @db.BigInt
-  Experience   String
+model guides {
+  id           String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  first_name   String
+  last_name    String
+  id_proof     String
+  mail         String
+  password     String
+  address      String
+  city         String
+  phone_number String
+  experience   String
+  destinations destinations[]
+  places       places[]
 }
 
-model Destination {
-  ID          String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  Name        String
-  Best_time   String
-  Best_season String
-  Hotels      String
-  Places      Places[]
-  Favorites   Favorites[]
+model destinations {
+  id       String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name     String
+  place    places[]
+  guide    guides   @relation(fields: [guidesId], references: [id])
+  guidesId String   @db.Uuid
 }
 
-model Places {
-  ID             String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  Destination    Destination @relation(fields: [Destination_Id], references: [ID])
-  Destination_Id String @db.Uuid
-  Place_Name     String
-  Image          String
-  Weather        Weather[]
+model places {
+  id            String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name          String
+  image_url     String[]
+  best_time     String
+  best_season   String
+  destinations  destinations @relation(fields: [destinationId], references: [id])
+  destinationId String       @db.Uuid
+  temperature   Float
+  humidity      Float
+  created_at    DateTime     @default(dbgenerated("now()")) @db.Timestamptz()
+  guide         guides       @relation(fields: [guidesId], references: [id])
+  guidesId      String       @db.Uuid
+  reviews       reviews[]
+  favourites    favourites[]
 }
 
-model Review {
-  ID          String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  Tourist     Tourist   @relation(fields: [T_ID], references: [id])
-  T_ID        String @db.Uuid
-  Rating      Int
-  Review      String    @db.VarChar(200)
-  Destination String
-  Date        DateTime
-  history     history[]
+model reviews {
+  id             String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  rating         Int
+  review_content String     @db.VarChar(200)
+  memories       String[]
+  created_at     DateTime   @default(dbgenerated("now()")) @db.Timestamptz()
+  tourists       tourists   @relation(fields: [touristsId], references: [id])
+  touristsId     String     @db.Uuid
+  places         places     @relation(fields: [placesId], references: [id])
+  placesId       String     @db.Uuid
+  histories      histories?
 }
 
-model history {
-  ID        String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  Tourist   Tourist @relation(fields: [T_ID], references: [id])
-  T_ID      String @db.Uuid
-  Review    Review  @relation(fields: [Review_ID], references: [ID])
-  Review_ID String @db.Uuid
+model histories {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tourists   tourists @relation(fields: [touristsId], references: [id])
+  touristsId String   @db.Uuid
+  reviews    reviews  @relation(fields: [reviewsId], references: [id])
+  reviewsId  String   @unique @db.Uuid
 }
 
-model Weather {
-  ID          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  Places      Places   @relation(fields: [Place_Id], references: [ID])
-  Place_Id    String
-  Temperature String
-  Humidity    Float
-  date        DateTime
-  Day         String
-}
-
-model Favorites {
-  Fav_ID      String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  Tourist     Tourist     @relation(fields: [T_ID], references: [id])
-  T_ID        String      @db.Uuid
-  Destination Destination @relation(fields: [D_ID], references: [ID])
-  D_ID        String @db.Uuid
+model favourites {
+  id         String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tourists   tourists? @relation(fields: [touristsId], references: [id])
+  touristsId String?   @db.Uuid
+  place      places    @relation(fields: [placeId], references: [id])
+  placeId    String    @db.Uuid
 }

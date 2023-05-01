@@ -1,98 +1,185 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from "@prisma/client";
+import { faker } from "@faker-js/faker";
+
+//intializing the client
 const Prisma = new PrismaClient();
+
 async function main() {
-     await Prisma.tourist.createMany({
-        data: [{
-            First_name: "Tejas",
-            Last_name: "J",
-            Phone_number: 886744567,
-            Mail_ID: "Tejas@gmail.com",
-            Password: "Tejas123",
-            City: "bengaluru",
-            Address: "Hoskota",
-            Interest_Place: "Mumbai"
-        },
-         {
-            First_name: "Tejas",
-            Last_name: "J",
-            Phone_number: 886744567,
-            Mail_ID: "Tejas@gmail.com",
-            Password: "Tejas123",
-            City: "bengaluru",
-            Address: "Hoskota",
-            Interest_Place: "Mumbai"
-        }]
+  await Prisma.favourites.deleteMany();
+  await Prisma.histories.deleteMany();
+  await Prisma.reviews.deleteMany();
+  await Prisma.places.deleteMany();
+  await Prisma.destinations.deleteMany();
+  await Prisma.guides.deleteMany();
+  await Prisma.tourists.deleteMany();
 
+  //create many records in tourist
+  for (let i = 0; i < 6; i++) {
+    await Prisma.tourists.create({
+      data: {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        address: faker.address.streetAddress(),
+        city: faker.address.city(),
+        interest_Place: faker.address.cityName(),
+        mail: faker.internet.email(),
+        password: faker.internet.password(),
+        phone_number: faker.phone.number("+91 ##### #####"),
+      },
+    });
+  }
 
+  //create many records in guides
+  for (let i = 0; i < 6; i++) {
+    await Prisma.guides.create({
+      data: {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        address: faker.address.streetAddress(),
+        city: faker.address.city(),
+        mail: faker.internet.email(),
+        password: faker.internet.password(),
+        phone_number: faker.phone.number("+91 ##### #####"),
+        experience: faker.random.numeric() + " year",
+        id_proof: faker.random.alphaNumeric(10),
+      },
     });
-    const Tourist= await Prisma.tourist.findMany( )
-    const Guide = await Prisma.guide.createMany({
-        data: [{
-            First_name: "raj",
-            Last_name: "kumar",
-            ID_Proof: "13k",
-            Mail_ID: "RK133mail.com",
-            Password: "13Raj",
-            Address: "Trinity",
-            City: "Banglore",
-            Phone_number: 9916881230,
-            Experience: "10 years"
-        },]
-    });
-    const Destination = await Prisma.destination.create({
-        data: {
-            Name: "bangalore",
-            Best_time: "10:30 AM",
-            Best_season: "winter",
-            Hotels: "taj",
-        },
-    });
-    const Places = await Prisma.places.create({
-        data: {
-            Place_Name: "lag bag",
-            Image: "image.jpeg",
-            Destination_Id: Destination.ID
-        },
-    });
-    const Review = await Prisma.review.createMany({
-        data: {
-            Date: new Date(),
-            Rating: 5,
-            Review: "excellent",
-            Destination: "goa",
-            T_ID: Tourist.
-        },
-    });
+  }
 
-    const Weather = await Prisma.weather.createMany({
-        data: {
-            date: new Date(),
-            Temperature: "25 degree C",
-            Humidity: 20,
-            Day: "thurday",
-            Place_Id: Places.ID
-        },
-    });
-    Tourist.map
-    const Favorites = await Prisma.favorites.createMany({
-        data: {
-            T_ID: Tourist.id,
-            D_ID: Destination.ID
-        },
-    });
-    const History = await Prisma.history.createMany({
-        data: {
-            T_ID: Tourist.id,
-            Review_ID: Review.ID
+  const guides = await Prisma.guides.findMany();
 
+  await Promise.all(
+    guides.map(async (guide) => {
+      await Prisma.destinations.createMany({
+        data: [
+          {
+            guidesId: guide.id,
+            name: faker.address.cityName(),
+          },
+          {
+            guidesId: guide.id,
+            name: faker.address.cityName(),
+          },
+          {
+            guidesId: guide.id,
+            name: faker.address.cityName(),
+          },
+        ],
+      });
+    })
+  );
 
+  const destinations = await Prisma.destinations.findMany();
+
+  await Promise.all(
+    destinations.map(async (destination) => {
+      const seasons = ["Summer", "Winter", "Mansoon", "Spring", "Autumn"];
+      const randomIndex = Math.floor(Math.random() * seasons.length);
+
+      await Prisma.places.createMany({
+        data: [
+          {
+            name: faker.address.city(),
+            best_season: seasons[randomIndex],
+            temperature: parseInt(faker.random.numeric(2)),
+            best_time: faker.date.weekday(),
+            humidity: parseInt(faker.random.numeric(2)),
+            destinationId: destination.id,
+            guidesId: destination.guidesId,
+            image_url: [faker.image.city(), faker.image.city()],
+          },
+          {
+            name: faker.address.city(),
+            best_season: seasons[randomIndex],
+            temperature: parseInt(faker.random.numeric(2)),
+            best_time: faker.date.weekday(),
+            humidity: parseInt(faker.random.numeric(2)),
+            destinationId: destination.id,
+            guidesId: destination.guidesId,
+            image_url: [faker.image.city(), faker.image.city()],
+          },
+        ],
+      });
+    })
+  );
+
+  const places = await Prisma.places.findMany();
+  const tourists = await Prisma.tourists.findMany();
+
+  await Promise.all(
+    tourists.map(async (tourist, index) => {
+      await Prisma.reviews.createMany({
+        data: [
+          {
+            placesId: places[index].id,
+            touristsId: tourist.id,
+            rating: parseInt(faker.random.numeric()),
+            review_content: faker.lorem.words(),
+            memories: [
+              faker.image.city(),
+              faker.image.city(),
+              faker.image.city(),
+            ],
+          },
+          {
+            placesId: places[0].id,
+            touristsId: tourist.id,
+            rating: parseInt(faker.random.numeric()),
+            review_content: faker.lorem.words(),
+            memories: [
+              faker.image.city(),
+              faker.image.city(),
+              faker.image.city(),
+            ],
+          },
+        ],
+      });
+    })
+  );
+
+  const reviews = await Prisma.reviews.findMany();
+
+  await Promise.all(
+    reviews.map(async (review) => {
+      await Prisma.histories.create({
+        data: {
+          reviewsId: review.id,
+          touristsId: review.touristsId,
         },
-    });
+      });
+    })
+  );
 
-    console.log("=>==>==>==>==> Data sent ==>==>");
+  await Promise.all(
+    tourists.map(async (tourist) => {
+      const randomIndex = Math.floor(Math.random() * places.length);
+      await Prisma.favourites.createMany({
+        data: [
+          {
+            placeId: places[randomIndex].id,
+            touristsId: tourist.id,
+          },
+          {
+            placeId: places[randomIndex].id,
+            touristsId: tourist.id,
+          },
+          {
+            placeId: places[randomIndex].id,
+            touristsId: tourist.id,
+          },
+          {
+            placeId: places[randomIndex].id,
+            touristsId: tourist.id,
+          },
+        ],
+      });
+    })
+  );
+
+  console.log("=>==>==>==>==> Data sent ==>==>");
 }
 main()
-    .catch((e) => console.error(e))
-    .finally(async () => {
-        await Prisma.$disconnect();
-    });
+  .catch((e) => console.error(e))
+  .finally(async () => {
+    await Prisma.$disconnect();
+  });
