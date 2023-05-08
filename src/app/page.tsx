@@ -1,5 +1,4 @@
 import Button from "@/components/Button";
-import Image from "next/image";
 import { AiOutlineUser } from "react-icons/ai";
 
 export default function Page() {
