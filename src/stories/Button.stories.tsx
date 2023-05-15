@@ -17,7 +17,7 @@ export const Primary: Story = {
   args:{
     intent:"primary",
     fullwidth:true,
-    children:"Primary Label",
+    children:"Login",
     LeftIcon:<AiOutlineLogin/>
   },
   argTypes:{
@@ -32,7 +32,7 @@ export const Disabled: Story = {
   args:{
     intent:"disabled",
     fullwidth:true,
-    children:"Disabled Label",
+    children:"Login",
     LeftIcon:<AiOutlineLogin/>
   },
   argTypes:{

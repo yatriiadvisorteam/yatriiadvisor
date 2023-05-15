@@ -13,6 +13,9 @@
   },
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
+    "@headlessui/react": "^1.7.14",
+    "@heroicons/react": "^2.0.18",
+    "@hookform/resolvers": "^3.1.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "^18.16.3",
     "@types/react": "18.2.0",
@@ -26,10 +29,12 @@
     "prisma": "^4.13.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.9",
     "react-icons": "^4.8.0",
     "react-redux": "^8.0.5",
     "tailwindcss": "3.3.2",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "yup": "^1.1.1"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.0.9",
@@ -38,7 +43,7 @@
     "@storybook/addon-styling": "^1.0.6",
     "@storybook/blocks": "^7.0.9",
     "@storybook/nextjs": "^7.0.9",
-    "@storybook/react": "^7.0.9",
+    "@storybook/react": "^7.0.11",
     "@storybook/testing-library": "^0.0.14-next.2",
     "eslint-plugin-storybook": "^0.6.12",
     "storybook": "^7.0.9",

@@ -7,10 +7,10 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: (theme) => ({
-        'primary': `linear-gradient(to top,#3EB489,#00E18F})`,
+        'primary': `linear-gradient(#364C63})`,
       }),
       colors:{
-        light:"#F1F1F1",
+        light:"#E9E8E8",
       }
     },
   },
