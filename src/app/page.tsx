@@ -1,4 +1,4 @@
-import Button from "@/components/Button";
+import Button from "@/components/Button1";
 import { AiOutlineUser } from "react-icons/ai";
 
 export default function Page() {
