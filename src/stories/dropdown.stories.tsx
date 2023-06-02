@@ -13,4 +13,4 @@ const options = [
   { label: 'Option 4', value: 'option-4' },
 ]
 
-export const Default = () => <CustomDropdown options={options} onSelect={action('onSelect')} />
+export const Default = () => <CustomDropdown Options ={options} onSelect={action('onSelect')} />

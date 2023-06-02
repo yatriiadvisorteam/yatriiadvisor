@@ -1,42 +1,56 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
+import React, { useState } from 'react';
 
-type FormData = {
+interface ProfileProps {
   name: string;
-  email: string;
-};
+  profilePic: string;
+}
 
-const schema = yup.object().shape({
-  name: yup.string().required(),
-  email: yup.string().email().required(),
-});
+const Profile: React.FC<ProfileProps> = ({ name, profilePic }) => {
+  const [updatedProfilePic, setUpdatedProfilePic] = useState(profilePic);
+  const [isEditing, setIsEditing] = useState(false);
 
-type Props = {
-  name: string;
-  email: string;
-  onSubmit: (data: FormData) => void;
-};
+  const handleProfilePicChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const image = event.target?.result as string;
+        setUpdatedProfilePic(image);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
-const ProfilePage: React.FC<Props> = ({ name, email, onSubmit }) => {
-  const { register, handleSubmit, formState } = useForm<FormData>({
-    resolver: yupResolver(schema),
-  });
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleSaveClick = () => {
+    setIsEditing(false);
+  };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="name">Name<br/></label>
-      <input type="text" {...register('name')} defaultValue={name} /><br/>
-      {formState.errors.name && <span>{formState.errors.name.message}</span>}<br/>
-
-      <label htmlFor="email">Email<br/></label>
-      <input type="email" {...register('email')} defaultValue={email} /><br/>
-      {formState.errors.email && <span>{formState.errors.email.message}</span>}<br/>
-
-      <button type="submit">Save</button>
-    </form>
+    <div className="profile">
+      <div className="profile-picture">
+        <img src={updatedProfilePic} alt={name} />
+        {isEditing && (
+          <div>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleProfilePicChange}
+            />
+          </div>
+        )}
+      </div>
+      <h2>{name}</h2>
+      {isEditing ? (
+        <button onClick={handleSaveClick}>Save</button>
+      ) : (
+        <button onClick={handleEditClick}>Edit</button>
+      )}
+    </div>
   );
 };
 
-export default ProfilePage;
+export default Profile;
