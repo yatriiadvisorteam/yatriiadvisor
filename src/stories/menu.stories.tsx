@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import DropdownMenu, { DropdownMenuProps } from '../components/menu';
 
 export default {
-  title: 'Components/Dropdown Menu',
+  title: 'Dropdown Menu',
   component: DropdownMenu,
 } as Meta;
 

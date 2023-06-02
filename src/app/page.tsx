@@ -1,16 +1,5 @@
-import Button from "@/components/Button1";
-import { AiOutlineUser } from "react-icons/ai";
-
+import PD from "@/components/PD";
 export default function Page() {
-  return (
-    <div>
-      <h1 className="text-3xl font-bold">Hello, Next.js!</h1>
-      <Button
-        LeftIcon={<AiOutlineUser className="text-xl" />}
-        intent={"primary"}
-      >
-        Signin
-      </Button>
-    </div>
-  );
-}
+    return <h1 className="text-3xl font-bold">Working!!
+    <PD></PD></h1>;
+  }

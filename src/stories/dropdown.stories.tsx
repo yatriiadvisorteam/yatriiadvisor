@@ -1,9 +1,9 @@
 import { action } from '@storybook/addon-actions'
-import CustomDropdown from '../components/dropdown'
+import Dropdown from '../components/dropdown'
 
 export default {
-  title: 'CustomDropdown',
-  component: CustomDropdown,
+  title: 'Dropdown',
+  component: Dropdown,
 }
 
 const options = [
@@ -13,4 +13,4 @@ const options = [
   { label: 'Option 4', value: 'option-4' },
 ]
 
-export const Default = () => <CustomDropdown Options ={options} onSelect={action('onSelect')} />
+export const Default = () => <Dropdown option ={options} onSelect={action('onSelect')} />
