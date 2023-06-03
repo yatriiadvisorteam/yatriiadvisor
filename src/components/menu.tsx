@@ -36,7 +36,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ title, items }) => {
 };
 
 export default DropdownMenu;
-import { ButtonExtendedProps, buttonStyles } from "./Button";
+import { ButtonExtendedProps, buttonStyles } from "./cancel_Button";
 import { Menu } from "@headlessui/react";
 
 export const UiMenu = ({ children }: { children: React.ReactNode }) => (
