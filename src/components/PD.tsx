@@ -1,7 +1,4 @@
-use clint
 import React, { useState } from 'react';
-
-
 const PD: React.FC = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [name, setName] = useState('');
