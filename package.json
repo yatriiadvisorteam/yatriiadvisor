@@ -1,5 +1,5 @@
 {
-  "name": "myapp",
+  "name": "YatriiAdvisor",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -17,11 +17,13 @@
     "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.18",
     "@hookform/resolvers": "^3.1.0",
+    "@prisma/client": "^4.15.0",
+    "@react-google-maps/api": "^2.18.1",
     "@reduxjs/toolkit": "^1.9.5",
     "@storybook/addon-actions": "^7.0.12",
     "@storybook/cli": "^7.0.17",
     "@supabase/supabase-js": "^2.24.0",
-    "@types/node": "^18.16.3",
+    "@types/mapbox-gl": "^2.7.11",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.1",
     "autoprefixer": "10.4.14",
@@ -29,16 +31,17 @@
     "class-variance-authority": "^0.6.0",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.4",
-    "next": "^13.4.1",
+    "leaflet": "^1.9.4",
+    "mapbox-gl": "^2.15.0",
+    "next": "^13.4.4",
     "postcss": "8.4.23",
-    "prisma": "^4.13.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
     "react-icons": "^4.8.0",
+    "react-leaflet": "^4.2.1",
     "react-redux": "^8.0.7",
     "tailwindcss": "3.3.2",
-    "typescript": "5.0.4",
     "yup": "^1.1.1"
   },
   "devDependencies": {
@@ -50,8 +53,12 @@
     "@storybook/nextjs": "^7.0.9",
     "@storybook/react": "^7.0.12",
     "@storybook/testing-library": "^0.0.14-next.2",
+    "@types/node": "^20.2.5",
     "eslint-plugin-storybook": "^0.6.12",
+    "prisma": "^4.15.0",
     "storybook": "^7.0.9",
-    "storybook-addon-next": "^1.8.0"
+    "storybook-addon-next": "^1.8.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
   }
 }

@@ -49,7 +49,7 @@ async function main() {
   const guides = await Prisma.guides.findMany();
 
   await Promise.all(
-    guides.map(async (guide) => {
+    guides.map(async (guide: { id: any; }) => {
       await Prisma.destinations.createMany({
         data: [
           {
@@ -72,7 +72,7 @@ async function main() {
   const destinations = await Prisma.destinations.findMany();
 
   await Promise.all(
-    destinations.map(async (destination) => {
+    destinations.map(async (destination: { id: any; guidesId: any; }) => {
       const seasons = ["Summer", "Winter", "Mansoon", "Spring", "Autumn"];
       const randomIndex = Math.floor(Math.random() * seasons.length);
 
@@ -107,7 +107,7 @@ async function main() {
   const tourists = await Prisma.tourists.findMany();
 
   await Promise.all(
-    tourists.map(async (tourist, index) => {
+    tourists.map(async (tourist: { id: any; }, index: string | number) => {
       await Prisma.reviews.createMany({
         data: [
           {
@@ -140,7 +140,7 @@ async function main() {
   const reviews = await Prisma.reviews.findMany();
 
   await Promise.all(
-    reviews.map(async (review) => {
+    reviews.map(async (review: { id: any; touristsId: any; }) => {
       await Prisma.histories.create({
         data: {
           reviewsId: review.id,
@@ -151,7 +151,7 @@ async function main() {
   );
 
   await Promise.all(
-    tourists.map(async (tourist) => {
+    tourists.map(async (tourist: { id: any; }) => {
       const randomIndex = Math.floor(Math.random() * places.length);
       await Prisma.favourites.createMany({
         data: [
