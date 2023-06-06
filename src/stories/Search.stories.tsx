@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Search, { SearchProps } from '../components/Search';
 
 const meta: Meta<typeof Search> = {
-  title: 'Examples/Search',
+  title: 'Search',
   component: Search,
 };
 
