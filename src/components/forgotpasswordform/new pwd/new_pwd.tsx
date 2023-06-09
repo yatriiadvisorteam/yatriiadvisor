@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import UP_Button from "./sub_button";
+import { link } from "fs";
 
 const NewPasswordForm = () => {
   const [password, setPassword] = useState("");
@@ -72,9 +73,14 @@ const NewPasswordForm = () => {
             />
           </div>
         </div><div className="container flex justify-center pt-8">
-        <button type="submit"><UP_Button/></button>
-        </div>
-        
+  
+    <button type="submit">
+      <UP_Button/>
+    </button>
+  
+</div>
+
+       
       </form>
     </div>
   );

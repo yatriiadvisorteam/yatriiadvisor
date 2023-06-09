@@ -6,8 +6,8 @@ import forgot_button from "./forgot_pwd_button";
 import For_Button from "./forgot_pwd_button";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
-import signin from "../signin";
-import Signin_button from "../signin";
+import signin from "./signin";
+import Signin_button from "./signin";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -18,43 +18,46 @@ const Login = () => {
   };
 
   return (
-    <div className="pt-2 pb-8">
+    <div className="pt-2 pb-8" >
       <div
-        className="font-bold text-button font-roboto text-center pb-8"
-        style={{ fontSize: 25 }}
+        className="font-bold text-button font-roboto text-center pt-2 pb-2"
+        style={{ fontSize: 20}}
       >
         <h1>Login</h1>
       </div>
-      <form>
-        <div className="font-bold text-button font-roboto flex pt-2 pb-2">
+      <form  style={{ fontSize: 10 }}>
+        <div className="font-bold text-button font-roboto flex pt-2 pb-2 container flex pl-4" style={{ fontSize: 14 }}>
           <label htmlFor="username">Username:</label>
           <br />
         </div>
-        <div>
+        <div className="pl-4" >
           <input
-            className="rounded-full pl-20 pr-20 pb-2 pt-2 border-b border-button border-t shadow-lg"
+            className="rounded-full pl-20 pr-20 pb-2 pt-2 border-b border-button border-t shadow-lg" style={{ fontSize: 14 }}
             type="text"
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div className="font-bold text-button font-roboto pt-4 pb-2">
+        <div className="font-bold text-button font-roboto pt-4 pb-2 pl-4" style={{ fontSize: 14 }}>
           <label htmlFor="password">Password:</label>
           <br />
         </div>
-        <div>
+        <div className="pl-4">
           <input
-            className="rounded-full pl-20 pr-20 pb-2 pt-2 border-button border-b border-t shadow-lg"
+            className="rounded-full pl-20 pr-20 pb-2 pt-2 border-b border-button border-t shadow-lg"
+            style={{ fontSize: 14 }}
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        <div className="pl-4">
         <button
+      
           type="submit"
-          className="pl-19 pr-15 pt-4 container  "
+          className="pl-15 pr-15 pt-6 container  "
           onClick={handleLogin}
         >
           <LOG_button />
@@ -62,31 +65,31 @@ const Login = () => {
           <div className="flex pt-2 pb-2">
             <For_Button />
           </div>
-        </button>
+        </button></div>
         <div
-          className="container flex justify-center "
+          className="container flex justify-center text-button"
           style={{ fontSize: 25 }}
         >
           ------------ or ------------
         </div>
-        <div className="pl-20">
+        <div className="container pl-24">
           <button>
             <FcGoogle
               className=" container margin-10px"
-              style={{ fontSize: 30 }}
+              style={{ fontSize: 25 }}
             />
             <span className="container">Google</span>
           </button>
           <button>
-            <FaFacebook className="pl-20 container" style={{ fontSize: 30 }} />
+            <FaFacebook className="pl-20 container" style={{ fontSize: 25 }} />
             <span className="pl-20 container ">Facebook</span>
           </button>
           <span
-            className=" pt-8 flex container justify-left "
-            style={{ fontSize: 16 }}
+            className=" container flex justify-center pt-6 pr-16 pl-[-1] text-button "
+            style={{ fontSize: 14 }}
           >
             Don't Have An Account ?...
-            <button type="submit" onClick={handleLogin}>
+            <button type="submit"  onClick={handleLogin}>
               <Signin_button />
             </button>
           </span>
