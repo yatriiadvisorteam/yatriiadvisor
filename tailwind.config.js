@@ -14,7 +14,8 @@ module.exports = {
         "extra":"#F02222",
         "unkown":"#F3B340",
         "br":"#F3B340",
-        "button":"#364C63"
+        "button":"#364C63",
+        
       }
     },
   },

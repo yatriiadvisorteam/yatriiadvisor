@@ -1,6 +1,6 @@
-export default function Button() {
+export default function Signin_button() {
     return (
-      <button className="text-unkown text-[14px] font-serif hover:underline focus:outline-none">
+      <button className="text-unkown text-[16px] font-serif hover:underline focus:outline-none">
         login
       </button>
     );
