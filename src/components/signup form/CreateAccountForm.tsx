@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Create_button from "./Create_button";
-import Signin_button from "../signin";
+import Signin_button from "../signin form/signin";
 
 const CreateAccountForm: React.FC = () => {
   const [firstName, setFirstName] = useState("");
@@ -70,82 +70,82 @@ const CreateAccountForm: React.FC = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ fontSize: 25 }} >
+    <form onSubmit={handleSubmit} style={{ fontSize: 10 }} >
       <div >
-        <div className="container justify-center flex font-bold text-button font-roboto  ">
+        <div className="container justify-center flex font-bold text-button font-roboto pb-4 pt-1 " style={{ fontSize: 16 }}>
           <h3>Create Account</h3>
-        </div>
+        </div >
         
         <label
           className="container pl-4 font-bold text-button font-roboto "
-          style={{ fontSize: 20 }}
+          style={{ fontSize: 14 }}
         >
           First Name:
           <br />
         </label>
         <input
-          className="rounded-full pl-20 pr-20 pb-1 pt-1 border-b border-button border-t shadow-lg"
+          className="rounded-full pl-20 pr-20 pb-2 pt-2 border-b border-button border-t shadow-lg"
           type="text "
           value={firstName}
           onChange={handleFirstNameChange}
         />
       </div>
-      <div>
+      <div className="pt-2">
         <label  className="container pl-4 font-bold text-button font-roboto "
-          style={{ fontSize: 20 }}
+          style={{ fontSize: 14 }}
         >
           Last Name:
           <br />
         </label>
         <input
-          className="rounded-full pl-20 pr-20 pb-1 pt-1 border-b border-button border-t shadow-lg"
+          className="rounded-full pl-20 pr-20 pb-2 pt-2  border-b border-button border-t shadow-lg"
           type="text"
           value={lastName}
           onChange={handleLastNameChange}
         />
       </div>
-      <div>
+      <div className="pt-2">
         <label  className="container pl-4 font-bold text-button font-roboto "
-          style={{ fontSize: 20 }}
+          style={{ fontSize: 14 }}
         >
           Email ID:
           <br />
         </label>
         <input
-          className="rounded-full pl-20 pr-20 pb-1 pt-1 border-b border-button border-t shadow-lg"
+          className="rounded-full pl-20 pr-20 pb-2 pt-2  border-b border-button border-t shadow-lg"
           type="email"
           value={email}
           onChange={handleEmailChange}
         />
       </div>
-      <div>
+      <div className="pt-2">
         <label className="container pl-4 font-bold text-button font-roboto "
-          style={{ fontSize: 20 }}>
+          style={{ fontSize: 14 }}>
           Password:
           <br />
         </label>
         <input
-              className="rounded-full pl-20 pr-20 pb-1 pt-1 border-b border-button border-t shadow-lg"
+              className="rounded-full pl-20 pr-20 pb-2 pt-2  border-b border-button border-t shadow-lg"
               type="password"
               value={password}
               onChange={handlePasswordChange}
             />
       </div>
-      <div>
+      <div className="pt-2">
         <label className="container pl-4 font-bold text-button font-roboto "
-          style={{ fontSize: 20 }}>
+          style={{ fontSize: 14 }}>
           Confirm Password:
           <br />
         </label>
         <input
-            className="rounded-full pl-20 pr-20 pb-1 pt-1 border-b border-button border-t shadow-lg"
+            className="rounded-full pl-20 pr-20 pb-2 pt-2  border-b border-button border-t shadow-lg"
             type="password"
             value={confirmPassword}
             onChange={handleConfirmPasswordChange}
           />
       </div>
       <div className="pt-4">  <label className="container pl-4 pt- font-bold text-button font-roboto "
-          style={{ fontSize: 20 }}>
+          style={{ fontSize: 10 }}>
       <input className="pr-2 "
             type="radio"
             value="policyOption1"
@@ -158,8 +158,8 @@ const CreateAccountForm: React.FC = () => {
         <Create_button />
       </button></div>
       <span
-            className=" pt-8 flex container justify-center  font-roboto font-bold text-button"
-            style={{ fontSize: 16 }}
+            className=" pt-6 flex container justify-center  font-roboto font-bold text-button"
+            style={{ fontSize: 12 }}
           >
             Already Have An Account ?...
             <button type="submit" onClick={handleLogin}>

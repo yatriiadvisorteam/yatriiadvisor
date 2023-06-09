@@ -10,8 +10,6 @@ export default function RootLayout({ children }: props) {
     
       <div className="w-full h-full flex">
       
-          
-          
         <main className="w-full h-full border-blue-300 flex items-center justify-center ">
           {children}
         </main>

@@ -15,6 +15,8 @@ module.exports = {
         "unkown":"#F3B340",
         "br":"#F3B340",
         "button":"#364C63",
+        "frame":"#F2F2F2",
+        "black":"#000000",
         
       }
     },

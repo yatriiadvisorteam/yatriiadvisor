@@ -8,7 +8,7 @@ const Yatrii = Roboto({ weight: "400", subsets: ["latin"] });
 export default function RootLayout({ children }: props) {
   return (
     <div className="h-screen w-screen overflow-hidden bg-">
-            <Link href={"/DASHBOARD/Forgotpasswordpage/newpwdpage"}>
+            <Link href={"/(auth)/Forgotpasswordpage/newpwdpage"}>
             </Link>
         <main className="w-full h-full border-blue-300 flex items-center justify-center ">
           {children}

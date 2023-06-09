@@ -3,7 +3,7 @@ import Login from "../signin form/login";
 
 export default function RectangleFrame2() {
     return (
-      <div className="h-[750px] w-[600px] top-10 bg-white border-[1px] border-secondary rounded-[20px]  flex flex-col items-center justify-center">
+      <div className="h-[490px] w-[340px]  container top-10 bg-frame border-[1px] border-button rounded-[20px]  flex flex-col items-center ">
         <CreateAccountForm/>
       </div>
     );
