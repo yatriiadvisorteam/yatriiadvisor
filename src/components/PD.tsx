@@ -27,14 +27,14 @@ const PD: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col " style={{ fontSize: 15}}>
       <h1 className="text-2xl font-bold mb-4">Profile Details</h1>
-      <div className="flex flex-col mb-4">
+      <div className="flex flex-col mb-4" >
         <label htmlFor="name" className="mb-1 font-bold text-br">
           Name
         </label>
         
-          <input
+          <input 
             id="name"
             type="text"
             className="border-b-4 border-br  rounded px-2 py-1"
