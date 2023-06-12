@@ -90,7 +90,7 @@ const Login = () => {
             className=" container flex justify-center pt-6 pr-12 font-roboto font-bold text-button "
             style={{ fontSize: 14 }}
           >
-            Don't Have An Account ?...
+            Don't Have An Account ?
             <Link href="../Signuppage"> <button type="submit"  onClick={handleLogin}>
               <Signup_button/>
             </button></Link>

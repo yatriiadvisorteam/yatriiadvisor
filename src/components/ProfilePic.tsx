@@ -1,8 +1,8 @@
-"use client";
+"use client"
 import React, { useState } from 'react';
 
 const ProfilePic: React.FC = () => {
-  const [profileImage, setProfileImage] = useState('');
+  const [profileImage, setProfileImage] = useState<string | undefined>(undefined);
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -21,20 +21,28 @@ const ProfilePic: React.FC = () => {
     }
   };
 
+  const renderProfileImage = () => {
+    if (profileImage) {
+      return (
+        <img
+          src={profileImage}
+          alt="Profile"
+          className="w-40 h-40 rounded-full mb-4 cursor-pointer"
+          onClick={handleImageClick}
+        />
+      );
+    } else {
+      return (
+        <div className="w-32 h-32 bg-gray-300 rounded-full mb-4 cursor-pointer" />
+      );
+    }
+  };
+
   return (
     <div className="flex flex-col items-center">
       <h1 className="text-2xl font-bold mb-4">Profile</h1>
       <div className="relative">
-        {profileImage ? (
-          <img
-            src={profileImage}
-            alt="Profile"
-            className="w-32 h-32 rounded-full mb-4 cursor-pointer"
-            onClick={handleImageClick}
-          />
-        ) : (
-          <div className="w-32 h-32 bg-gray-300 rounded-full mb-4 cursor-pointer" />
-        )}
+        {renderProfileImage()}
         <label htmlFor="imageUpload" className="absolute bottom-0 right-0">
           <svg
             xmlns="http://www.w3.org/2000/svg"
