@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import RectangleFrame3 from "@/components/forgotpasswordform/frame3";
+import RectangleFrame4 from "@/components/forgotpasswordform/new pwd/newframe";
 
 
 const page = () => {
@@ -18,7 +18,7 @@ const page = () => {
           />
         </div>
         <div className="column">
-          <RectangleFrame3/>
+          <RectangleFrame4/>
         </div>
       </div>
       <style jsx>{`

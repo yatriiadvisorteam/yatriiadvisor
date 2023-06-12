@@ -17,6 +17,7 @@ module.exports = {
         "button":"#364C63",
         "frame":"#F2F2F2",
         "black":"#000000",
+        "hover":"#FFB950"
         
       }
     },

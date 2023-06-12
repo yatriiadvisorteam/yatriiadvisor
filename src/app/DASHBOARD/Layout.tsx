@@ -1,19 +1,35 @@
-import {Roboto} from "next/font/google";
+"use client";
+import React, { useState } from 'react';
 
-
-interface props {
+interface Props {
   children: React.ReactNode;
 }
-export default function RootLayout({ children }: props) {
+
+export default function RootLayout({ children }: Props) {
   return (
-    <div className="h-screen w-screen overflow-hidden">
-    
-      <div className="w-full h-full flex">
-      
-        <main className="w-full h-full border-blue-300 flex items-center justify-center ">
-          {children}
-        </main>
+    <div className="bg-br">
+      <div className="navbar-container bg-button pb-4 border-b border-black">
+        <div className="logo">
+          <img
+            src="/logo.png" // Replace with the path to your logo image in the public folder
+            alt=""
+            width={200} // Specify the desired width of the image
+            height={200} // Specify the desired height of the image
+          />
+        </div>
+        {children}
       </div>
+      <style jsx>{`
+        .navbar-container {
+          display: flex;
+          align-items: center;
+          padding: 10px;
+        }
+
+        .bg-br {
+          background-color: #e9e8e8;
+        }
+      `}</style>
     </div>
   );
 }
