@@ -1,13 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import LOG_button from "./LOG_button";
-import RectangleFrame from "./framebox";
-import forgot_button from "./forgot_pwd_button";
 import For_Button from "./forgot_pwd_button";
 import { FcGoogle } from "react-icons/fc";
-import { FaFacebook } from "react-icons/fa";
-import signin from "./signin";
-import Signin_button from "./signin";
+import { FaFacebook, FaUserAlt } from "react-icons/fa";
+
+import Link from "next/link";
+import Signup_button from "./signin";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -34,6 +33,7 @@ const Login = () => {
           <input
             className="rounded-full pl-20 pr-20 pb-2 pt-2 border-b border-button border-t shadow-lg" style={{ fontSize: 14 }}
             type="text"
+            placeholder="Name"
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -44,10 +44,12 @@ const Login = () => {
           <br />
         </div>
         <div className="pl-4">
-          <input
-            className="rounded-full pl-20 pr-20 pb-2 pt-2 border-b border-button border-t shadow-lg"
+        <input
+        
+            className="rounded-full pl-20 pr-20 pb-2 pt-2  border-b border-button border-t shadow-lg"
             style={{ fontSize: 14 }}
             type="password"
+            placeholder="Password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -85,13 +87,13 @@ const Login = () => {
             <span className="pl-20 container ">Facebook</span>
           </button>
           <span
-            className=" container flex justify-center pt-6 pr-16 pl-[-1] text-button "
+            className=" container flex justify-center pt-6 pr-12 font-roboto font-bold text-button "
             style={{ fontSize: 14 }}
           >
             Don't Have An Account ?...
-            <button type="submit"  onClick={handleLogin}>
-              <Signin_button />
-            </button>
+            <Link href="../Signuppage"> <button type="submit"  onClick={handleLogin}>
+              <Signup_button/>
+            </button></Link>
           </span>
         </div>
       </form>

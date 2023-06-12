@@ -8,7 +8,7 @@ interface Props {
 export default function RootLayout({ children }: Props) {
   return (
     <div className="bg-br">
-      <div className="navbar-container bg-button pb-8 border-b border-black">
+      <div className="navbar-container bg-button pb-4 border-b border-black">
         <div className="logo">
           <img
             src="/logo.png" // Replace with the path to your logo image in the public folder

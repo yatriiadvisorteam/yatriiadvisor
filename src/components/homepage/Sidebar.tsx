@@ -1,41 +1,36 @@
-"use client";
-import React from 'react';
+"use client"
+import { useState } from 'react';
 import Link from 'next/link';
+import { FaHome, FaUser, FaEnvelope } from 'react-icons/fa';
 
-const Sidebar = () => {
+const Sidebar1 = () => {
   return (
     <div className="sidebar">
-      <div className="sidebar-header">
-        <h1>My Sidebar</h1>
-      </div>
-      <nav>
-        <ul>
-          <li>
-            <Link href="/">
-              <a>Home</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/about">
-              <a>About</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/contact">
-              <a>Contact</a>
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <div className="logout-logo">
-        <Link href="/logout">
-          <a>
-            <img src="/logout-logo.png" alt="Logout" />
-          </a>
-        </Link>
-      </div>
+      <ul>
+        <li>
+          <Link href="/">
+            
+              <FaHome /> Home
+           
+          </Link>
+        </li>
+        <li>
+          <Link href="/about">
+           
+              <FaUser /> About
+            
+          </Link>
+        </li>
+        <li>
+          <Link href="/contact">
+            
+              <FaEnvelope /> Contact
+            
+          </Link>
+        </li>
+      </ul>
     </div>
   );
 };
 
-export default Sidebar;
+export default Sidebar1;
