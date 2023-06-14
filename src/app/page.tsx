@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import { FaHeart, FaReadme, FaStar, FaUserAlt, FaUsers } from "react-icons/fa";
 import NAV_Button from "@/components/Navigate_button";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 
 const page = () => {
   return (
@@ -40,7 +41,7 @@ const page = () => {
               <FaStar className="star" />
             </div>
             <div>
-              <NAV_Button />
+              <Link href="https://www.google.com/maps/place/Goa/@15.3500845,73.3471494,9z/data=!3m1!4b1!4m6!3m5!1s0x3bbfba106336b741:0xeaf887ff62f34092!8m2!3d15.2993265!4d74.123996!16zL20vMDFjMW5t?entry=ttu"><NAV_Button /></Link>
             </div>
           </div>
         </div>
@@ -52,7 +53,7 @@ const page = () => {
         </div>
         <div className="image-row">
           <div className="image-column">
-            <div className="image-container">
+            <div className="image-container top-[6px]">
               <img src="/image1.jpg" alt="Image 1" className="image" />
             </div>
           </div>
@@ -69,7 +70,7 @@ const page = () => {
         </div>
       </div>
       <div>
-        <div className="text-button font-roboto font-bold pt-2 container pl-20 pb-4  text-3xl">
+        <div className="text-button font-roboto font-bold pt-2 container pl-20 pb-4 top-20  text-3xl">
           How It Works ?
         </div>
         <div className="flex">

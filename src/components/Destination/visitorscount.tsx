@@ -46,8 +46,6 @@ const Visitors = () => {
       rating: 4.9,
       count: 12239,
     },
- 
-  
       {
         id: 6,
         src: '/Mysuru.jpg',
