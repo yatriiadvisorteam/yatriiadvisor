@@ -45,7 +45,7 @@ const page = () => {
           </div>
         </div>
       </div>
-      <hr className="blue pt-4 pb-4" />
+  
       <div className=" pb-2">
         <div className="text-button font-roboto font-bold pt-10 container pl-20 pb-8 text-3xl">
           Top Destinations

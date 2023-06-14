@@ -1,27 +1,19 @@
 "use client"
 import React from "react";
-const Desti = () => {
+const Rating= () => {
   const images = [
+    
     {
-      id: 1,
-      src: "/goa.jpg",
-      alt: "Image 1",
-      link: "https://example.com/image1",
-      place: "Goa",
-      rating: 4.5,
-      count: 45100,
-    },
+        id: 1,
+        src: '/lotus.jpg',
+        alt: 'Image 6',
+        link: 'https://example.com/image2',
+        place: "Lotus temple",
+        rating: 4.9,
+        count: 12239,
+      },
     {
       id: 2,
-      src: "/Hampi.jpg",
-      alt: "Image 2",
-      link: "https://example.com/image2",
-      place: "Hampi",
-      rating: 4.2,
-      count: 43580,
-    },
-    {
-      id: 3,
       src: "/Kochi.jpg",
       alt: "Image 3",
       link: "https://example.com/image3",
@@ -30,7 +22,7 @@ const Desti = () => {
       count: 14620,
     },
     {
-        id: 4,
+        id: 3,
         src: '/Malpe.jpg',
         alt: 'Image 4',
         link: 'https://example.com/image2',
@@ -39,23 +31,33 @@ const Desti = () => {
       count: 61200,
       },
       {
-        id: 5,
+        id: 4,
         src: '/Mysuru.jpg',
         alt: 'Image 5',
         link: 'https://example.com/image1',
         place: "Mysuru",
-      rating: 4.7,
+      rating: 4.4,
       count: 12007,
       },
       {
-        id: 6,
-        src: '/lotus.jpg',
-        alt: 'Image 6',
-        link: 'https://example.com/image2',
-        place: "Lotus temple",
-        rating: 4.9,
-        count: 12239,
+        id: 5,
+        src: "/goa.jpg",
+        alt: "Image 1",
+        link: "https://example.com/image1",
+        place: "Goa",
+        rating: 4.5,
+        count: 45100,
       },
+      {
+        id: 6,
+        src: "/Hampi.jpg",
+        alt: "Image 2",
+        link: "https://example.com/image2",
+        place: "Hampi",
+        rating: 4.2,
+        count: 43580,
+      },
+      
    
   ];
 
@@ -90,4 +92,4 @@ const Desti = () => {
   );
 };
 
-export default Desti;
+export default Rating;
