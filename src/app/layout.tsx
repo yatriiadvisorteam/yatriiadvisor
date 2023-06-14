@@ -61,7 +61,7 @@ export default function RootLayout({ children }: Props) {
                   </a>
                 </li>
                 <li>
-                  <a href="">
+                  <a href="/Dashboard/Favourite">
                     <FaHeart />
                     Favourites
                   </a>
@@ -76,6 +76,12 @@ export default function RootLayout({ children }: Props) {
                   <a href="">
                     <FaHireAHelper className="text-button" />
                    Help
+                  </a>
+                </li>
+                <li>
+                  <a href="/Dashboard/TouristExperience">
+                    <FaHireAHelper className="text-button" />
+                   Experience
                   </a>
                 </li>
               
