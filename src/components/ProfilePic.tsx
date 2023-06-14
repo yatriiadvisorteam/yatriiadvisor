@@ -40,7 +40,7 @@ const ProfilePic: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-2xl font-bold mb-4">Profile</h1>
+      <h1 className="text-2xl font-roboto mb-4">Profile</h1>
       <div className="relative">
         {renderProfileImage()}
         <label htmlFor="imageUpload" className="absolute bottom-0 right-0">
