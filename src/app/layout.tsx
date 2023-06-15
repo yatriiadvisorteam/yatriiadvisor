@@ -3,9 +3,8 @@ import { useState } from "react";
 import "../styles/globals.css";
 import Providers from "./providers";
 import { AiOutlineBars, AiOutlineClose } from "react-icons/ai";
-import { RiHome2Line, RiLogoutBoxLine, RiUserLine } from "react-icons/ri";
-import { FaHeart, FaHireAHelper, FaMapMarkerAlt, FaRegPaperPlane } from "react-icons/fa";
-import { FcAbout } from "react-icons/fc";
+import {  RiLogoutBoxLine} from "react-icons/ri";
+import { FaBook, FaHandsHelping, FaHeart, FaHireAHelper, FaHome, FaMapMarkerAlt, FaPaperPlane,  FaUserAlt } from "react-icons/fa";
 import Link from "next/link";
 interface Props {
   children: React.ReactNode;
@@ -38,43 +37,43 @@ export default function RootLayout({ children }: Props) {
               <ul>
                 <li>
                   <Link href="/">
-                    <RiHome2Line />
+                    <FaHome className="text-button"/>
                     Home
                   </Link>
                 </li>
                 <li>
                   <a href="/Dashboard/DestinationPage">
-                    <FaMapMarkerAlt/>
+                    <FaMapMarkerAlt className="text-button"/>
                     Destination
                   </a>
                 </li>
                 <li>
                   <a href="/Dashboard/Profile">
-                    <RiUserLine />
+                    <FaUserAlt className="text-button" />
                     Profile
                   </a>
                 </li>
                 <li>
                   <a href="">
-                    <FcAbout />
+                    <FaBook className="text-button" />
                     About US
                   </a>
                 </li>
                 <li>
                   <a href="/Dashboard/Favourite">
-                    <FaHeart />
+                    <FaHeart className="text-button" />
                     Favourites
                   </a>
                 </li>
                 <li>
-                  <a href="">
-                    <FaRegPaperPlane />
+                  <a href="/Dashboard/SearchPlan">
+                    <FaPaperPlane/>
                     Plans
                   </a>
                 </li>
                 <li>
                   <a href="">
-                    <FaHireAHelper className="text-button" />
+                    <FaHandsHelping className="text-button" />
                    Help
                   </a>
                 </li>
