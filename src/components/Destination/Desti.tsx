@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { destinationsData } from './destinationData';
 
-const Destinations: React.FC = () => {
+const Desti: React.FC = () => {
   const [searchSeason, setSearchSeason] = useState('');
   const [searchState, setSearchState] = useState('');
   const [selectedDestination, setSelectedDestination] = useState(null);
@@ -56,7 +56,7 @@ const Destinations: React.FC = () => {
                 <p className="text-sm text-gray-500 mb-2">
                   State: {destination.state}
                 </p>
-                <p className="text-sm text-gray-500">{destination.details}</p>
+               
               </div>
             </li>
           ))}
@@ -66,33 +66,11 @@ const Destinations: React.FC = () => {
           No destinations found
         </p>
       )}
+     
 
-      {selectedDestination && (
-        <div className="absolute top-0 left-0 z-10 w-full h-full flex items-center justify-center">
-          <div className="bg-white p-4 rounded shadow-lg">
-            <h2 className="text-xl font-bold mb-2">
-              {selectedDestination.name}
-            </h2>
-            <p className="text-sm text-gray-500 mb-2">
-              Season: {selectedDestination.season}
-            </p>
-            <p className="text-sm text-gray-500 mb-2">
-              State: {selectedDestination.state}
-            </p>
-            <p className="text-sm text-gray-500">
-              {selectedDestination.URL}
-            </p>
-            <button
-              onClick={() => setSelectedDestination(null)}
-              className="bg-blue-500 text-white  px-4 py-2 mt-4 rounded-full bg-button"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+   
     </div>
   );
 };
 
-export default Destinations;
+export default Desti;
