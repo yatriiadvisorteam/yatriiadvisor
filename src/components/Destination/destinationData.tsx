@@ -6,7 +6,7 @@ export const destinationsData = [
       season: ' monsoon ',
       state: 'Goa',
       image: '/goa.jpg',
-      details: 'The state of Goa, in India, is famous for its beaches and places of worship. Tourism is its primary industry, and is generally focused on the coastal areas of Goa, with decreased tourist activity inland.',
+      url: '/src/app/Dashboard/DestinationPage/Goapage'
     },
     {
       id: 2,
