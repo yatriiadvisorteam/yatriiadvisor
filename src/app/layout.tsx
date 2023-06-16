@@ -90,7 +90,7 @@ export default function RootLayout({ children }: Props) {
                   </a>
                 </li>
               
-              <div className=" container flex pt-20"><li>
+              <div className=" container flex pt-10"><li>
                   <a href="">
                     <RiLogoutBoxLine/>
                    Logout
