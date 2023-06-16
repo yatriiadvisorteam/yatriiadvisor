@@ -72,6 +72,12 @@ export default function RootLayout({ children }: Props) {
                   </a>
                 </li>
                 <li>
+                  <a href="/Dashboard/SharedTrips">
+                    <FaPaperPlane/>
+                    Shared Plans
+                  </a>
+                </li>
+                <li>
                   <a href="">
                     <FaHandsHelping className="text-button" />
                    Help
