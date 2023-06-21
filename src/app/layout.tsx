@@ -72,6 +72,12 @@ export default function RootLayout({ children }: Props) {
                   </a>
                 </li>
                 <li>
+                  <a href="/Dashboard/SharedTrips">
+                    <FaPaperPlane/>
+                    Shared Plans
+                  </a>
+                </li>
+                <li>
                   <a href="">
                     <FaHandsHelping className="text-button" />
                    Help
@@ -84,7 +90,7 @@ export default function RootLayout({ children }: Props) {
                   </a>
                 </li>
               
-              <div className=" container flex pt-20"><li>
+              <div className=" container flex pt-10"><li>
                   <a href="">
                     <RiLogoutBoxLine/>
                    Logout
